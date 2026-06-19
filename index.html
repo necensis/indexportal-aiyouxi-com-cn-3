@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>爱游戏 · 稳定入口说明页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f1f3f4;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #2d2f32;
+      padding: 2rem 1.2rem;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page {
+      max-width: 880px;
+      width: 100%;
+    }
+
+    /* 卡片通用设计 */
+    .card {
+      background: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.04);
+      border: 1px solid #e6e9ec;
+      padding: 2rem 1.8rem;
+      margin-bottom: 1.8rem;
+      transition: box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.03);
+    }
+
+    /* Hero 区域 */
+    .hero {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 2.8rem 2rem;
+      margin-bottom: 2rem;
+      border: 1px solid #e2e6ea;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 540;
+      letter-spacing: 0.02em;
+      color: #1a1c1e;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero .sub {
+      font-size: 1.1rem;
+      color: #576066;
+      max-width: 600px;
+      margin: 0.6rem auto 0 auto;
+      line-height: 1.6;
+    }
+
+    .hero .meta-line {
+      margin-top: 1.6rem;
+      font-size: 0.9rem;
+      color: #7f8990;
+      border-top: 1px solid #ecf0f2;
+      padding-top: 1.2rem;
+    }
+
+    /* 章节标题 */
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 520;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #1f2327;
+    }
+
+    .section-title span {
+      background: #eef1f4;
+      padding: 0.15rem 0.7rem;
+      border-radius: 24px;
+      font-size: 0.8rem;
+      color: #4a545c;
+      font-weight: 400;
+    }
+
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .highlight-item {
+      background: #f7f9fb;
+      border-radius: 14px;
+      padding: 1.1rem 1.3rem;
+      border: 1px solid #e7ebef;
+    }
+
+    .highlight-item h3 {
+      font-weight: 520;
+      font-size: 1.05rem;
+      margin-bottom: 0.4rem;
+      color: #1f262b;
+    }
+
+    .highlight-item p {
+      font-size: 0.94rem;
+      color: #4b565f;
+    }
+
+    .usage-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .usage-item {
+      display: flex;
+      gap: 1rem;
+      align-items: baseline;
+      border-bottom: 1px dashed #e3e8ed;
+      padding-bottom: 0.8rem;
+    }
+
+    .usage-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .usage-num {
+      font-weight: 500;
+      color: #3f4a54;
+      min-width: 1.8rem;
+    }
+
+    .faq-item {
+      margin-bottom: 1rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid #eef2f5;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .faq-q {
+      font-weight: 510;
+      color: #252b30;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-a {
+      color: #546069;
+      font-size: 0.95rem;
+    }
+
+    .notice {
+      background: #f8fafc;
+      border-left: 4px solid #b4c0ca;
+      padding: 1.2rem 1.5rem;
+      border-radius: 12px;
+      color: #3c474f;
+      font-size: 0.95rem;
+      margin-top: 0.3rem;
+    }
+
+    a {
+      color: #1e6b9b;
+      text-decoration: none;
+      font-weight: 480;
+      border-bottom: 1px solid #cbdae6;
+      transition: border-color 0.15s;
+    }
+
+    a:hover {
+      border-bottom-color: #1e6b9b;
+    }
+
+    .footer-note {
+      margin-top: 2.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #7c8892;
+      border-top: 1px solid #dfe4e9;
+      padding-top: 1.8rem;
+    }
+
+    /* 响应式 */
+    @media (max-width: 640px) {
+      body {
+        padding: 1rem 0.8rem;
+      }
+      .hero {
+        padding: 1.8rem 1.2rem;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .card {
+        padding: 1.4rem 1rem;
+      }
+      .highlight-grid {
+        grid-template-columns: 1fr;
+      }
+      .usage-item {
+        flex-wrap: wrap;
+      }
+      .section-title {
+        font-size: 1.15rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- Hero 摘要 -->
+    <div class="hero">
+      <h1>爱游戏 · 稳定入口说明</h1>
+      <div class="sub">
+        一份关于 <a href="https://indexportal-aiyouxi.com.cn">爱游戏</a> 的简要介绍，
+        帮助你更快了解这个页面入口的定位、适用场景以及日常使用时的参考建议。
+      </div>
+      <div class="meta-line">
+        摘要版 · 内容基于公开信息整理 &nbsp;|&nbsp; 更新于 2025
+      </div>
+    </div>
+
+    <!-- 亮点：稳定入口特点 -->
+    <div class="card">
+      <div class="section-title">
+        ⚙️ 入口特点
+        <span>定位</span>
+      </div>
+      <div class="highlight-grid">
+        <div class="highlight-item">
+          <h3>指向清晰</h3>
+          <p>作为索引页面的固定链接，无需反复查找或记忆复杂地址，直接打开 <a href="https://indexportal-aiyouxi.com.cn">爱游戏</a> 即可到达对应页面。</p>
+        </div>
+        <div class="highlight-item">
+          <h3>结构稳定</h3>
+          <p>页面框架与核心访问路径保持相对一致，减少因结构频繁变动带来的不适感，适合作为日常参考入口。</p>
+        </div>
+        <div class="highlight-item">
+          <h3>轻量说明</h3>
+          <p>附带基本的用途说明与使用建议，帮助新接触的用户快速理解页面功能，降低摸索成本。</p>
+        </div>
+        <div class="highlight-item">
+          <h3>配置友好</h3>
+          <p>不依赖特定插件或复杂环境，主流浏览器均可正常加载，保持基础的可用性与一致性。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 使用建议 (场景化) -->
+    <div class="card">
+      <div class="section-title">
+        📌 使用建议
+        <span>场景参考</span>
+      </div>
+      <div class="usage-list">
+        <div class="usage-item">
+          <div class="usage-num">①</div>
+          <div><strong>日常浏览</strong> — 如果你经常需要访问某个固定页面，可以将 <a href="https://indexportal-aiyouxi.com.cn">爱游戏</a> 添加至浏览器书签，方便随时打开。</div>
+        </div>
+        <div class="usage-item">
+          <div class="usage-num">②</div>
+          <div><strong>信息核对</strong> — 在需要确认页面内容或功能更新时，以此链接作为对照依据，避免误入相似但不同的页面。</div>
+        </div>
+        <div class="usage-item">
+          <div class="usage-num">③</div>
+          <div><strong>分享参考</strong> — 向朋友或同事介绍相关页面时，可直接提供该链接，配合本页说明可使对方更快了解用途。</div>
+        </div>
+        <div class="usage-item">
+          <div class="usage-num">④</div>
+          <div><strong>备用入口</strong> — 如果常用入口暂时无法访问，可尝试通过 <a href="https://indexportal-aiyouxi.com.cn">爱游戏</a> 查找可用路径或备用信息。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ 摘要 + 可信说明 -->
+    <div class="card">
+      <div class="section-title">
+        ❓ 常见问题 · 摘要
+        <span>FAQ</span>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">这个链接是官方唯一入口吗？</div>
+        <div class="faq-a">该链接是当前已知的索引页面地址之一，建议以此作为主要参考。若后续出现调整，请以页面自身提示为准。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">页面内容是否长期不变？</div>
+        <div class="faq-a">页面结构保持相对稳定，但内容可能根据实际情况进行适度更新。本说明页仅代表整理时的状态。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">访问时需要注意什么？</div>
+        <div class="faq-a">请使用网络环境正常的设备访问，并留意地址栏域名是否为 <code>indexportal-aiyouxi.com.cn</code>，避免仿冒页面。</div>
+      </div>
+
+      <!-- 可信但克制的说明块 -->
+      <div class="notice">
+        <strong>说明：</strong> 本介绍页仅为便于理解而整理，不承诺任何特定功能或服务可用性。链接指向的页面由对应方维护，建议根据实际情况自行判断。请合理使用，勿滥用或用于误导性场景。
+      </div>
+    </div>
+
+    <!-- 额外小卡片：简洁提示 -->
+    <div class="card" style="padding: 1.2rem 1.8rem; background: #fafbfc;">
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+        <span style="font-size: 0.95rem; color: #3f4b56;">🔗 页面入口：<a href="https://indexportal-aiyouxi.com.cn">爱游戏</a></span>
+        <span style="font-size: 0.85rem; color: #7b8793;">建议收藏 · 以备常用</span>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      爱游戏 · 索引入口说明页 &nbsp;|&nbsp; 仅作参考
+    </div>
+
+  </div>
+</body>
+</html>

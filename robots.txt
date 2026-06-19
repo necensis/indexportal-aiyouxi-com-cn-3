@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://necensis.github.io/indexportal-aiyouxi-com-cn-3/sitemap.xml
